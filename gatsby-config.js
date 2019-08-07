@@ -1,4 +1,15 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+let activeEnv = process.env.ACTIVE_ENV || "development"
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+// If we are in dev, ignore the fact that we are using a fake SSL certificate
+if (activeEnv == "development") {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+}
 
 module.exports = {
   siteMetadata: {
@@ -33,11 +44,16 @@ module.exports = {
       resolve: "gatsby-source-gravityforms",
       options: {
         // Base URL needs to include protocol (http/https)
-        baseUrl: "https://gatsbytest.justlikethis.co.uk",
+        baseUrl: `${process.env.PROTOCOL}://${process.env.BASE_URL}`,
         // Gravity Forms API
         api: {
-          key: "ck_fddcf13b8177913c65f28f78b948510728e725ea",
-          secret: "cs_7a7d3a0d8ad43e79dac21da7f91101d0c8322b1a",
+          key: process.env.GATSBY_GF_API_KEY,
+          secret: process.env.GATSBY_GF_API_SECRET,
+        },
+        // Basic Auth
+        basicAuth: {
+          username: process.env.BASIC_AUTH_USER,
+          password: process.env.BASIC_AUTH_PASS,
         },
       },
     },
