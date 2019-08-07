@@ -1,7 +1,8 @@
 let activeEnv = process.env.ACTIVE_ENV || "development"
 
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  //path: `.env.${process.env.NODE_ENV}`,
+  path: `.env.development`,
 })
 
 console.log(`Using environment config: '${activeEnv}'`)
@@ -47,8 +48,8 @@ module.exports = {
         baseUrl: `${process.env.PROTOCOL}://${process.env.BASE_URL}`,
         // Gravity Forms API
         api: {
-          key: process.env.GATSBY_GF_API_KEY,
-          secret: process.env.GATSBY_GF_API_SECRET,
+          key: process.env.GATSBY_GF_CONSUMER_KEY,
+          secret: process.env.GATSBY_GF_CONSUMER_SECRET,
         },
         // Basic Auth
         basicAuth: {
