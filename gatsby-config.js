@@ -58,6 +58,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-source-randomcat",
+      options: {
+        api: "a5d3ce41-1f54-4145-b630-6ce2c2afc736",
+        catCategories: "15",
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

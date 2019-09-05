@@ -1,14 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import GravityFormForm from "gatsby-gravityforms-component"
 
-import allGravityData from "../GfQuery"
+import { AllGravityData } from "../GfQuery"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
+  const formData = AllGravityData()
   return (
     <Layout>
       <SEO title="Home" />
@@ -16,7 +17,7 @@ const IndexPage = () => {
       <p>Im just testing Gravity Forms</p>
       <GravityFormForm
         id={1}
-        formData={allGravityData()}
+        formData={formData}
         lambda={process.env.GATSBY_LAMBDA_ENDPOINT}
       />
       <p>Now go build something great.</p>

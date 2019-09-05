@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 
-const allGravityData = () => {
+export const AllGravityData = () => {
   const { allGfForm } = useStaticQuery(
     graphql`
       query allGfQuery {
@@ -43,5 +43,3 @@ const allGravityData = () => {
   )
   return allGfForm
 }
-
-export default allGravityData
