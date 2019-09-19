@@ -14,6 +14,7 @@ export const AllGravityData = () => {
               formFields {
                 id
                 label
+                labelPlacement
                 description
                 descriptionPlacement
                 type
